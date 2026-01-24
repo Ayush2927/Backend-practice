@@ -1,4 +1,4 @@
-export {asyncHandler}
+
 
 /* const asyncHandler=(fn)=> async(req,res,next)=>{
     try{
@@ -12,8 +12,9 @@ export {asyncHandler}
         })}}  */
 
 const asyncHandler=(requestHandler)=>{
-    (req,res,next)=>{
-        Promise.resolve(requestHandler(Request,ResizeObserver,next)).catch((err)=>next(err))
+   return (req,res,next)=>{
+        Promise.resolve(requestHandler(req,res,next)).catch((err)=>next(err))
     }
 }
 
+export {asyncHandler}
